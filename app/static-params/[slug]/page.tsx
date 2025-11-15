@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return pages.map((slug) => ({ slug }));
 }
 
-export default async function GspPage(props: PageProps<"/gsp/[slug]">) {
+export default async function GspPage(props: PageProps<"/static-params/[slug]">) {
   cacheLife("days");
 
   const { slug } = await props.params;

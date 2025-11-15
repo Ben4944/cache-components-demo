@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 
 export interface Page {
@@ -38,4 +39,11 @@ export async function getPageBySlug(slug: string) {
   }
 
   return page;
+}
+
+export async function getPageBySlugCached(slug: Promise<string>) {
+  "use cache";
+  cacheLife("days");
+
+  return { slug: await slug, page: await getPageBySlug(await slug) };
 }
