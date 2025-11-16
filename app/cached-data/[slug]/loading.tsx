@@ -1,3 +1,3 @@
-export default function BasePageLoading() {
+export default function CachedDataPageLoading() {
   return <p>Loading...</p>;
 }

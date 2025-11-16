@@ -1,12 +1,7 @@
-"use cache";
-
-import { cacheLife } from "next/cache";
 import { getPageBySlug } from "@/data/pages";
 import { DynamicPage } from "@/components/dynamic-page";
 
 export default async function BasePage(props: PageProps<"/base/[slug]">) {
-  cacheLife("days");
-
   const { slug } = await props.params;
 
   const page = await getPageBySlug(slug);

@@ -1,3 +1,3 @@
-export default function GspPageLoading() {
+export default function StaticParamsPageLoading() {
   return <p>Loading...</p>;
 }
