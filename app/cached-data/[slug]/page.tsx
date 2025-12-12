@@ -4,12 +4,14 @@ import { cacheLife } from "next/cache";
 import { getPageBySlugCached } from "@/data/pages";
 import { DynamicPage } from "@/components/dynamic-page";
 
-export default async function CachedDataPage(props: PageProps<"/cached-data/[slug]">) {
+export default async function CachedDataPage(
+  props: PageProps<"/cached-data/[slug]">
+) {
   cacheLife("days");
 
-  const { slug, page } = await getPageBySlugCached(
-    props.params.then((p) => p.slug)
-  );
+  const params = await props.params;
 
-  return <DynamicPage slug={slug} page={page} />;
+  const page = await getPageBySlugCached(params.slug);
+
+  return <DynamicPage slug={params.slug} page={page} />;
 }

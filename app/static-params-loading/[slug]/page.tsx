@@ -1,4 +1,4 @@
-"use cache: remote";
+"use cache";
 
 import { cacheLife } from "next/cache";
 import { getPageBySlug, getPagesForPrerender } from "@/data/pages";
@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return pages.map((slug) => ({ slug }));
 }
 
-export default async function StaticParamsRemotePage(props: PageProps<"/static-params-remote/[slug]">) {
+export default async function StaticParamsLoadingPage(props: PageProps<"/static-params-loading/[slug]">) {
   cacheLife("days");
 
   const { slug } = await props.params;

@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/cfg/:slug",
+        source: "/next-config/:slug",
         headers: [
           {
             key: "Vercel-CDN-Cache-Control",

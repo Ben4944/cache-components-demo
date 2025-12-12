@@ -41,9 +41,10 @@ export async function getPageBySlug(slug: string) {
   return page;
 }
 
-export async function getPageBySlugCached(slug: Promise<string>) {
+export async function getPageBySlugCached(slug: string) {
   "use cache";
   cacheLife("days");
 
-  return { slug: await slug, page: await getPageBySlug(await slug) };
+  const page = await getPageBySlug(slug);
+  return page;
 }
